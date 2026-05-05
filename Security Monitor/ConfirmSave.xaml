@@ -1,0 +1,61 @@
+﻿<Window x:Class="Security_Monitor.ConfirmSave"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterOwner"
+        Width="750"
+        Height="200">
+
+    <Window.Resources>
+        <Style x:Key="RoundedButton" TargetType="Button">
+            <Setter Property="Background" Value="#CC000000"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property ="FontSize"  Value="28"/>
+            <Setter Property ="FontWeight"  Value="Bold"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="RoundedButtonSecondary" TargetType="Button" BasedOn="{StaticResource RoundedButton}">
+            <Setter Property="Background" Value="#CC000000"/>
+        </Style>
+    </Window.Resources>
+
+    <Border Background="#CC000000" CornerRadius="8" Padding="25" Margin="10">
+        <StackPanel>
+            <!-- Текст -->
+            <TextBlock Text="Вы уверены, что хотите сохранить изменения?"
+                       Foreground="White"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       Margin="0 0 0 30"/>
+
+            <!-- Кнопки -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Да" Width="120" Margin="0 0 60 0"
+                        Style="{StaticResource RoundedButton}"
+                        Click="Yes_Click"
+                        IsDefault="True"/>
+                <Button Content="Нет" Width="120"
+                        Style="{StaticResource RoundedButtonSecondary}"
+                        Click="No_Click"
+                        IsCancel="True"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>
