@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Security_Monitor.Models;
 using Security_Monitor.Services;
 using System;
@@ -57,8 +57,7 @@ namespace Security_Monitor.ViewModels
             try
             {
                 DateTime dt = DateTime.Today.Add(TimeSpan.Parse(time)).AddSeconds(-0.5);
-                var nx = new NxApiService();
-                PhotoNX = await nx.GetImageAsync(dt, "2da4a772-4c24-ed11-a888-9bd9c6760d9a");
+                PhotoNX = await NxApiService.Shared.GetImageAsync(dt, AppConfig.Current.Nx.CameraId);
             }
             catch (Exception)
             {

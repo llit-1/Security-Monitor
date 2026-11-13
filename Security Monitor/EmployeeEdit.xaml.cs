@@ -1,4 +1,4 @@
-﻿using Security_Monitor.Models;
+using Security_Monitor.Models;
 using Security_Monitor.Services;
 using Security_Monitor.ViewModels;
 using System;
@@ -234,9 +234,7 @@ namespace Security_Monitor
             {
                 vm.PassCardNumber = code;
                 DateTime dt = DateTime.Today.Add(TimeSpan.Parse(time));
-                var nx = new NxApiService();
-
-                BitmapSource source = await nx.GetImageAsync(dt, "2da4a772-4c24-ed11-a888-9bd9c6760d9a");
+                BitmapSource source = await NxApiService.Shared.GetImageAsync(dt, AppConfig.Current.Nx.CameraId);
 
                 if (source != null)
                 {
